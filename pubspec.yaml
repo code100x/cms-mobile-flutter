@@ -1,5 +1,5 @@
 name: cms_flutter
-description: "A new Flutter project."
+description: 'A mobile app for the app.100xDevs.com'
 publish_to: 'none'
 version: 0.1.0
 
@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.6.1
+  go_router: ^14.3.0
 
 dev_dependencies:
   flutter_test:
