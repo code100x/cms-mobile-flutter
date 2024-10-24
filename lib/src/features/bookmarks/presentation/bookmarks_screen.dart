@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+import 'package:cms_flutter/src/common/confirm_delete_modal.dart';
 
 class BookmarksScreen extends StatefulWidget {
   const BookmarksScreen({super.key});
@@ -82,7 +85,12 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                     subtitle: const Text('Posted on: 10 Aug 24'),
                     trailing: IconButton(
                       onPressed: () {
-                        // TODO: Implement delete bookmark
+                        confirmDeleteModal(
+                            context: context,
+                            handleDelete: () {
+                              // TODO: Handle delete properly
+                              context.pop();
+                            });
                       },
                       icon: const Icon(Icons.delete_forever_outlined),
                       color: Colors.red,
