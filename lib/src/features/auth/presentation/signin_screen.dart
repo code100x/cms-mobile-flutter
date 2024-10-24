@@ -1,6 +1,7 @@
 import 'package:cms_flutter/src/common/primary_button.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SigninScreen extends StatefulWidget {
   const SigninScreen({super.key});
@@ -14,8 +15,11 @@ class _SigninScreenState extends State<SigninScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:
-            IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new)),
+        leading: IconButton(
+            onPressed: () {
+              context.go("/landing");
+            },
+            icon: const Icon(Icons.arrow_back_ios_new)),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 12.0, right: 12.0),
@@ -56,8 +60,8 @@ class _SigninScreenState extends State<SigninScreen> {
                           ..onTap = () {
                             // TODO: Open the forgot password flow.
                           },
-                        style:
-                            const TextStyle(color: Color(0xFF3B58E0), fontSize: 16)),
+                        style: const TextStyle(
+                            color: Color(0xFF3B58E0), fontSize: 16)),
                   ),
                 ),
                 PrimaryButton(buttonText: 'Log In', onPressed: () {}),
