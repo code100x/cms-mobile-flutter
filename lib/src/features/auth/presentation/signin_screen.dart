@@ -15,19 +15,19 @@ class _SigninScreenState extends State<SigninScreen> {
     return Scaffold(
       appBar: AppBar(
         leading:
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new)),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 12.0, right: 12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Login Now",
               style: TextStyle(
                   fontSize: 32, height: 2, fontWeight: FontWeight.bold),
             ),
-            Text(
+            const Text(
               'Login to access your coding cohorts and continue your journey.',
               style: TextStyle(fontSize: 18),
             ),
@@ -48,7 +48,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   decoration: _fieldDecoration("Enter Password"),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 12, bottom: 12),
+                  padding: const EdgeInsets.only(top: 12, bottom: 12),
                   child: RichText(
                     text: TextSpan(
                         text: "Forgot Password?",
@@ -57,18 +57,18 @@ class _SigninScreenState extends State<SigninScreen> {
                             // TODO: Open the forgot password flow.
                           },
                         style:
-                            TextStyle(color: Color(0xFF3B58E0), fontSize: 16)),
+                            const TextStyle(color: Color(0xFF3B58E0), fontSize: 16)),
                   ),
                 ),
                 PrimaryButton(buttonText: 'Log In', onPressed: () {}),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
                   child: RichText(
                     text: TextSpan(
                       text: "Don't have an account? ",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                       ),
@@ -79,7 +79,7 @@ class _SigninScreenState extends State<SigninScreen> {
                                 // TODO: Navigate to sign up page
                               },
                             text: 'Sign Up',
-                            style: TextStyle(color: Color(0xFF3B58E0)))
+                            style: const TextStyle(color: Color(0xFF3B58E0)))
                       ],
                     ),
                   ),

@@ -14,20 +14,20 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading:
-            IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back_ios_new)),
+        leading: IconButton(
+            onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new)),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 12.0, right: 12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Sign Up Now",
               style: TextStyle(
                   fontSize: 32, height: 2, fontWeight: FontWeight.bold),
             ),
-            Text(
+            const Text(
               'Join the coding revolution and become a 100xDev today.',
               style: TextStyle(fontSize: 18),
             ),
@@ -65,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       RichText(
                         text: TextSpan(
                           text: "I agree with ",
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           children: [
                             TextSpan(
                                 recognizer: TapGestureRecognizer()
@@ -73,7 +73,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                     // TODO: Open the terms and conditions or link to browsers webpage
                                   },
                                 text: 'Terms & Conditions',
-                                style: TextStyle(color: Color(0xFF3B58E0)))
+                                style:
+                                    const TextStyle(color: Color(0xFF3B58E0)))
                           ],
                         ),
                       ),
@@ -81,14 +82,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
                 PrimaryButton(buttonText: 'Sign Up', onPressed: () {}),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Center(
                   child: RichText(
                     text: TextSpan(
                       text: "Already have an account? ",
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                       ),
@@ -99,7 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 // TODO: Open the terms and conditions or link to browsers webpage
                               },
                             text: 'Log In',
-                            style: TextStyle(color: Color(0xFF3B58E0)))
+                            style: const TextStyle(color: Color(0xFF3B58E0)))
                       ],
                     ),
                   ),

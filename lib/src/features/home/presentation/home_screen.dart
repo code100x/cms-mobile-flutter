@@ -7,19 +7,19 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 6.0),
+          padding: const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 6.0),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Flexible(
+                const Flexible(
                     flex: 3,
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               // TODO: replace with logo image later
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       RichText(
-                          text: TextSpan(
+                          text: const TextSpan(
                         style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                             style: TextStyle(color: Colors.white),
                           )),
                       OutlinedButton(
-                          style: ButtonStyle(),
+                          style: const ButtonStyle(),
                           onPressed: () => {},
                           child: const Text(
                             'Sign Up Now',
