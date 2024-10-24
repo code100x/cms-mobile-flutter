@@ -3,15 +3,15 @@ import 'package:cms_flutter/src/common/primary_button.dart';
 import 'package:cms_flutter/src/common/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Padding(
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
           padding: const EdgeInsets.fromLTRB(12.0, 6.0, 12.0, 6.0),
           child: Column(
             children: [
@@ -228,13 +228,19 @@ class LandingScreen extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      PrimaryButton(buttonText: "Log In", onPressed: () {}),
+                      PrimaryButton(
+                          buttonText: "Log In",
+                          onPressed: () {
+                            context.go('/signin');
+                          }),
                       const SizedBox(
                         height: 20,
                       ),
                       SecondaryButton(
                         buttonText: 'Sign Up Now',
-                        onPressed: () {},
+                        onPressed: () {
+                          context.go('/signup');
+                        },
                       ),
                     ],
                   ),
