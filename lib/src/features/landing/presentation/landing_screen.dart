@@ -4,8 +4,8 @@ import 'package:cms_flutter/src/common/secondary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class LandingScreen extends StatelessWidget {
+  const LandingScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -50,8 +50,8 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey),
                                 color: const Color(0xFF3259E8),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
                             height: 50,
                             width: 50,
                             child: Center(
@@ -124,8 +124,8 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey),
                                 color: const Color(0xFF83CD29),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
                             height: 50,
                             width: 50,
                             child: Center(
@@ -149,8 +149,8 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey),
                                 color: const Color(0xFFFBC02D),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
                             height: 50,
                             width: 50,
                             child: Center(
@@ -174,8 +174,8 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border: Border.all(color: Colors.grey),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(10))),
+                                borderRadius: const BorderRadius.all(
+                                    Radius.circular(10))),
                             height: 50,
                             width: 50,
                             child: Center(
