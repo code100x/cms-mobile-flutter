@@ -1,3 +1,4 @@
+import 'package:cms_flutter/src/common/purchase_needed_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -68,8 +69,15 @@ class _CourseCardState extends State<CourseCard> {
                       ),
                       PrimaryButton(
                           buttonText: 'View Content',
-                          onPressed: () {
-                            context.go('/courses/1');
+                          onPressed: () async {
+                            // Show modal for purchase
+                            // if returns true navigate
+                            await purchaseNeededModal(
+                                context: context,
+                                handleDelete: () {
+                                  context.pop();
+                                });
+                            if (mounted) context.go('/courses/1');
                           }),
                       const SizedBox(
                         height: 10,
