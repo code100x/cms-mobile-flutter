@@ -91,8 +91,7 @@ class _EditProfileScreenState extends State<ChangePasswordScreen> {
       padding: const EdgeInsets.only(bottom: 8.0, top: 8),
       child: Text(
         labelText,
-        style: const TextStyle(
-            fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
       ),
     );
   }

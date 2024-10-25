@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:cms_flutter/src/common/primary_button.dart';
 import 'package:cms_flutter/src/common/secondary_button.dart';
+import 'package:cms_flutter/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
@@ -23,7 +24,6 @@ class LandingScreen extends StatelessWidget {
                     CircleAvatar(
                       backgroundImage:
                           AssetImage('assets/images/hero_icon.png'),
-                      backgroundColor: Colors.blue,
                       radius: 20,
                     ),
                     SizedBox(
@@ -37,6 +37,14 @@ class LandingScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(
+                height: 30,
+              ),
+              OutlinedButton(
+                  onPressed: () {
+                    context.go('/account');
+                  },
+                  child: const Text("Test User Login")),
               Expanded(
                 child: Stack(
                   alignment: Alignment.center,
@@ -48,8 +56,8 @@ class LandingScreen extends StatelessWidget {
                           angle: 3.14 / 12.0,
                           child: Container(
                             decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
-                                color: const Color(0xFF3259E8),
+                                border: Border.all(color: CommonPallet.border),
+                                color: CommonPallet.primaryButtonBG,
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(10))),
                             height: 50,
@@ -96,8 +104,10 @@ class LandingScreen extends StatelessWidget {
                             end: Alignment.bottomCenter,
                             colors: [
                               Colors.transparent,
-                              Colors.white.withOpacity(
-                                  1), // More blur effect at the bottom
+                              Theme.of(context)
+                                  .scaffoldBackgroundColor
+                                  .withOpacity(
+                                      1), // More blur effect at the bottom
                             ],
                             stops: const [
                               0.7,
@@ -109,8 +119,10 @@ class LandingScreen extends StatelessWidget {
                         child: BackdropFilter(
                           filter: ImageFilter.blur(),
                           child: Container(
-                            color: Colors.white.withOpacity(
-                                1), // Transparent container for the blur
+                            color: Theme.of(context)
+                                .scaffoldBackgroundColor
+                                .withOpacity(
+                                    1), // Transparent container for the blur
                           ),
                         ),
                       ),
@@ -122,7 +134,7 @@ class LandingScreen extends StatelessWidget {
                           angle: 3.14 / 30.0,
                           child: Container(
                             decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
+                                border: Border.all(color: CommonPallet.border),
                                 color: const Color(0xFF83CD29),
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(10))),
@@ -136,7 +148,7 @@ class LandingScreen extends StatelessWidget {
                                     Colors.white,
                                     BlendMode.srcIn,
                                   ),
-                                  semanticsLabel: 'React Logo'),
+                                  semanticsLabel: 'White JS Logo'),
                             ),
                           ),
                         )),
@@ -147,7 +159,7 @@ class LandingScreen extends StatelessWidget {
                           angle: -3.14 / 12.0,
                           child: Container(
                             decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey),
+                                border: Border.all(color: CommonPallet.border),
                                 color: const Color(0xFFFBC02D),
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(10))),
@@ -161,7 +173,7 @@ class LandingScreen extends StatelessWidget {
                                     Colors.black,
                                     BlendMode.srcIn,
                                   ),
-                                  semanticsLabel: 'React Logo'),
+                                  semanticsLabel: 'Black JS Logo'),
                             ),
                           ),
                         )),
@@ -173,7 +185,7 @@ class LandingScreen extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                                 color: Colors.white,
-                                border: Border.all(color: Colors.grey),
+                                border: Border.all(color: CommonPallet.border),
                                 borderRadius: const BorderRadius.all(
                                     Radius.circular(10))),
                             height: 50,
@@ -186,7 +198,7 @@ class LandingScreen extends StatelessWidget {
                                     Colors.green,
                                     BlendMode.srcIn,
                                   ),
-                                  semanticsLabel: 'React Logo'),
+                                  semanticsLabel: 'Mongo Db Logo'),
                             ),
                           ),
                         )),
@@ -201,17 +213,21 @@ class LandingScreen extends StatelessWidget {
                     children: [
                       RichText(
                           textAlign: TextAlign.center,
-                          text: const TextSpan(
+                          text: TextSpan(
                               style: TextStyle(
                                   fontSize: 36,
                                   fontWeight: FontWeight.w600,
                                   height: 1,
-                                  color: Colors.black),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .color),
                               text: "Be a ",
-                              children: [
+                              children: const [
                                 TextSpan(
                                     text: "100xDev ",
-                                    style: TextStyle(color: Color(0xFF3B58E0))),
+                                    style: TextStyle(
+                                        color: CommonPallet.primaryButtonBG)),
                                 TextSpan(text: "because 10x isn't enough")
                               ])),
                       const SizedBox(

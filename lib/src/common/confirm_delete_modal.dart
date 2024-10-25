@@ -8,7 +8,7 @@ Future<void> confirmDeleteModal(
   return showModalBottomSheet<void>(
     isScrollControlled: true,
     isDismissible: true,
-    backgroundColor: Colors.white,
+    backgroundColor: Theme.of(context).colorScheme.tertiary,
     context: context,
     builder: (context) {
       return SizedBox(

@@ -50,7 +50,7 @@ class _CourseWeekScreenState extends State<CourseWeekScreen> {
 
   Widget _getBookMarks() {
     final listItems = List.generate(10, (index) => index);
-
+    final colorScheme = Theme.of(context).colorScheme;
     return ListView.separated(
         itemBuilder: (context, index) {
           return SizedBox(
@@ -59,9 +59,8 @@ class _CourseWeekScreenState extends State<CourseWeekScreen> {
             child: Container(
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
-                  color: const Color(0xFFF1F5F9),
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 210, 214, 220)),
+                  color: colorScheme.tertiary,
+                  border: Border.all(color: colorScheme.outline),
                   borderRadius: BorderRadius.circular(15)),
               child: Material(
                 color: Colors.transparent,
@@ -77,9 +76,7 @@ class _CourseWeekScreenState extends State<CourseWeekScreen> {
                         height: 50,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border.all(
-                                  color:
-                                      const Color.fromARGB(255, 164, 168, 174)),
+                              border: Border.all(color: colorScheme.outline),
                               borderRadius: BorderRadius.circular(10)),
                           child: const Center(
                             child: Icon(

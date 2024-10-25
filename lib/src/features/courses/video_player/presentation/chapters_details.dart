@@ -16,13 +16,14 @@ class _ChaptersDetailsState extends State<ChaptersDetails> {
   ];
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return ListView.separated(
         itemBuilder: (context, i) {
           return SizedBox(
             height: 50,
             child: Container(
               decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 229, 233, 236),
+                  color: colorScheme.tertiary,
                   borderRadius: BorderRadius.circular(10)),
               child: Padding(
                 padding: const EdgeInsets.only(left: 15.0),

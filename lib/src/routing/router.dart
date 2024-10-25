@@ -29,7 +29,7 @@ final _accountShellKey = GlobalKey<NavigatorState>(debugLabel: 'accountShell');
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: '/account',
+    initialLocation: '/courses/1/1',
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: [
@@ -57,7 +57,7 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return ScaffoldWithNavigationBar(navigationShell: navigationShell);
+          return ScaffoldWithNestedNavigation(navigationShell: navigationShell);
         },
         branches: [
           StatefulShellBranch(navigatorKey: _coursesShellKey, routes: [

@@ -1,4 +1,5 @@
 import 'package:cms_flutter/src/common/primary_button.dart';
+import 'package:cms_flutter/src/constants/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -67,11 +68,19 @@ class _SignupScreenState extends State<SignupScreen> {
                     SizedBox(
                       child: Row(
                         children: [
-                          Checkbox(value: false, onChanged: (val) {}),
+                          Checkbox(
+                            value: false,
+                            onChanged: (val) {},
+                            checkColor: CommonPallet.primaryButtonBG,
+                          ),
                           RichText(
                             text: TextSpan(
                               text: "I agree with ",
-                              style: const TextStyle(color: Colors.black),
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .color),
                               children: [
                                 TextSpan(
                                     recognizer: TapGestureRecognizer()
@@ -80,7 +89,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                       },
                                     text: 'Terms & Conditions',
                                     style: const TextStyle(
-                                        color: Color(0xFF3B58E0)))
+                                        color: CommonPallet.primaryButtonBG))
                               ],
                             ),
                           ),
@@ -95,8 +104,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       child: RichText(
                         text: TextSpan(
                           text: "Already have an account? ",
-                          style: const TextStyle(
-                            color: Colors.black,
+                          style: TextStyle(
+                            color: Theme.of(context).textTheme.bodyLarge!.color,
                             fontSize: 18,
                           ),
                           children: [
@@ -106,8 +115,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                     // TODO: Open the terms and conditions or link to browsers webpage
                                   },
                                 text: 'Log In',
-                                style:
-                                    const TextStyle(color: Color(0xFF3B58E0)))
+                                style: const TextStyle(
+                                    color: CommonPallet.primaryButtonBG))
                           ],
                         ),
                       ),
@@ -127,8 +136,7 @@ class _SignupScreenState extends State<SignupScreen> {
       padding: const EdgeInsets.only(bottom: 8.0, top: 8),
       child: Text(
         labelText,
-        style: const TextStyle(
-            fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
       ),
     );
   }

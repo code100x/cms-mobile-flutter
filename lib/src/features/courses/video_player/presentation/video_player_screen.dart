@@ -40,145 +40,156 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const AspectRatio(
-              aspectRatio: 16.0 / 9.0,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: VideoPlayer()),
-            ),
-            Row(
-              children: [
-                const Text(
-                  'Introduction to HTML',
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-                const Spacer(),
-                IconButton(
-                    onPressed: () {
-                      selectVideoQualityModal(
-                          context: context,
-                          handleDownload: () {
-                            context.pop();
-                          });
-                    },
-                    icon: const Icon(Icons.download_outlined))
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        selected = _Selection.content;
-                      });
-                    },
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Text(
-                          "Content",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                          child: Container(
-                            color: selected == _Selection.content
-                                ? const Color(0xFF3B58E0)
-                                : Colors.transparent,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        selected = _Selection.chapters;
-                      });
-                    },
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Text(
-                          "Chapters",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                          child: Container(
-                            color: selected == _Selection.chapters
-                                ? const Color(0xFF3B58E0)
-                                : Colors.transparent,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: InkWell(
-                    onTap: () {
-                      setState(() {
-                        selected = _Selection.slides;
-                      });
-                    },
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        const Text(
-                          "Slides",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                        SizedBox(
-                          height: 3,
-                          child: Container(
-                            color: selected == _Selection.slides
-                                ? const Color(0xFF3B58E0)
-                                : Colors.transparent,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
             Expanded(
-              child: IndexedStack(
-                index: selected == _Selection.content
-                    ? 0
-                    : selected == _Selection.chapters
-                        ? 1
-                        : 2,
-                children: const [
-                  ContentDetails(),
-                  ChaptersDetails(),
-                  SlidesDetails(),
+              child: ListView(
+                children: [
+                  const AspectRatio(
+                    aspectRatio: 16.0 / 9.0,
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: VideoPlayer()),
+                  ),
+                  Row(
+                    children: [
+                      const Text(
+                        'Introduction to HTML',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
+                      const Spacer(),
+                      IconButton(
+                          onPressed: () {
+                            selectVideoQualityModal(
+                                context: context,
+                                handleDownload: () {
+                                  context.pop();
+                                });
+                          },
+                          icon: Icon(
+                            Icons.download_outlined,
+                            color: Theme.of(context).colorScheme.onTertiary,
+                          ))
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              selected = _Selection.content;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text(
+                                "Content",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 3,
+                                child: Container(
+                                  color: selected == _Selection.content
+                                      ? const Color(0xFF3B58E0)
+                                      : Colors.transparent,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              selected = _Selection.chapters;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text(
+                                "Chapters",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 3,
+                                child: Container(
+                                  color: selected == _Selection.chapters
+                                      ? const Color(0xFF3B58E0)
+                                      : Colors.transparent,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              selected = _Selection.slides;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              const Text(
+                                "Slides",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                              SizedBox(
+                                height: 3,
+                                child: Container(
+                                  color: selected == _Selection.slides
+                                      ? const Color(0xFF3B58E0)
+                                      : Colors.transparent,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    height: 500,
+                    child: IndexedStack(
+                      index: selected == _Selection.content
+                          ? 0
+                          : selected == _Selection.chapters
+                              ? 1
+                              : 2,
+                      children: const [
+                        ContentDetails(),
+                        ChaptersDetails(),
+                        SlidesDetails(),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
+            ),
           ],
         ),
       )),

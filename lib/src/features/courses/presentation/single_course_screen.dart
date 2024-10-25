@@ -62,6 +62,7 @@ class _SingleCourseScreenState extends State<SingleCourseScreen> {
   }
 
   Widget _getBookMarks(bool show) {
+    final colorScheme = Theme.of(context).colorScheme;
     final listItems = List.generate(10, (index) => index);
     if (show) {
       return ListView.separated(
@@ -72,9 +73,8 @@ class _SingleCourseScreenState extends State<SingleCourseScreen> {
               child: Container(
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
-                    color: const Color(0xFFF1F5F9),
-                    border: Border.all(
-                        color: const Color.fromARGB(255, 210, 214, 220)),
+                    color: colorScheme.tertiary,
+                    border: Border.all(color: colorScheme.outline),
                     borderRadius: BorderRadius.circular(15)),
                 child: Material(
                   color: Colors.transparent,
@@ -90,9 +90,7 @@ class _SingleCourseScreenState extends State<SingleCourseScreen> {
                           height: 50,
                           child: Container(
                             decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: const Color.fromARGB(
-                                        255, 164, 168, 174)),
+                                border: Border.all(color: colorScheme.outline),
                                 borderRadius: BorderRadius.circular(10)),
                             child: const Center(
                               child: Icon(
@@ -105,7 +103,7 @@ class _SingleCourseScreenState extends State<SingleCourseScreen> {
                         title: const Text('HTML Introduction'),
                         subtitle: const Text('Posted on: 10 Aug 24'),
                         trailing: const Icon(
-                          Icons.check_circle_rounded,
+                          Icons.check_circle_outline_outlined,
                           color: Color(0xFF00823E),
                           size: 26,
                         ),

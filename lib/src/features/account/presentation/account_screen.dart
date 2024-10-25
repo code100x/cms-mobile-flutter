@@ -1,6 +1,7 @@
+import 'package:cms_flutter/src/common/change_theme_button.dart';
 import 'package:cms_flutter/src/common/primary_button.dart';
 import 'package:cms_flutter/src/common/secondary_button.dart';
-import 'package:cms_flutter/src/theme/dark_mode_notifier.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -14,7 +15,6 @@ class AccountScreen extends ConsumerStatefulWidget {
 class _AccountScreenState extends ConsumerState<AccountScreen> {
   @override
   Widget build(BuildContext context) {
-    var darkMode = ref.watch(darkModeProvider);
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -30,13 +30,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                   ),
                 ),
                 const Spacer(),
-                Switch(
-                  value: darkMode,
-                  onChanged: (val) {
-                    ref.read(darkModeProvider.notifier).toggle();
-                  },
-                ),
-                const Text('Dark Mode'),
+                ChangeThemeButton(ref: ref),
                 const SizedBox(
                   width: 20,
                 )
@@ -50,7 +44,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                   height: 100,
                   child: Container(
                     decoration: BoxDecoration(
-                        color: const Color(0xFFF1F5F9),
+                        color: Theme.of(context).colorScheme.tertiary,
                         borderRadius: BorderRadius.circular(10)),
                     child: const Center(
                       child: Text(
@@ -81,48 +75,45 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
               height: 20,
             ),
             _accountActionButton(
-              icon: const Icon(Icons.person_outlined),
-              color: Colors.black,
+              icon: Icons.person_outlined,
+              color: Theme.of(context).colorScheme.onTertiary,
               onTap: () {
                 context.go('/account/profile');
               },
               text: 'Edit Profile',
             ),
             _accountActionButton(
-              icon: const Icon(Icons.lock_outlined),
-              color: Colors.black,
+              icon: Icons.lock_outlined,
+              color: Theme.of(context).colorScheme.onTertiary,
               onTap: () {
                 context.go('/account/change-password');
               },
               text: 'Change Password',
             ),
             _accountActionButton(
-              icon: const Icon(Icons.info_outlined),
-              color: Colors.black,
+              icon: Icons.info_outlined,
+              color: Theme.of(context).colorScheme.onTertiary,
               onTap: () {
                 // TODO: Navigate to terms and conditions
               },
               text: 'Terms & Conditions',
             ),
             _accountActionButton(
-              icon: const Icon(Icons.shield_outlined),
-              color: Colors.black,
+              icon: Icons.shield_outlined,
+              color: Theme.of(context).colorScheme.onTertiary,
               onTap: () {
                 // TODO: Navigate to terms and conditions
               },
               text: 'Privacy Policy',
             ),
             _accountActionButton(
-                icon: const Icon(
-                  Icons.logout_outlined,
-                  color: Colors.red,
-                ),
+                icon: Icons.logout_outlined,
                 color: Colors.red,
                 onTap: () {
                   showModalBottomSheet<void>(
                     isScrollControlled: true,
                     isDismissible: true,
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).colorScheme.tertiary,
                     context: context,
                     builder: (context) {
                       return SizedBox(
@@ -199,7 +190,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
     required VoidCallback onTap,
     required Color color,
     required String text,
-    required Icon icon,
+    required IconData icon,
   }) {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10, bottom: 15),
@@ -208,7 +199,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
         width: double.infinity,
         child: Container(
           decoration: BoxDecoration(
-              color: const Color(0xFFE2E8F0),
+              color: Theme.of(context).colorScheme.tertiary,
               borderRadius: BorderRadius.circular(10)),
           child: Material(
             color: Colors.transparent,
@@ -219,7 +210,10 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                   const SizedBox(
                     width: 20,
                   ),
-                  icon,
+                  Icon(
+                    icon,
+                    color: color,
+                  ),
                   const SizedBox(
                     width: 5,
                   ),

@@ -1,3 +1,4 @@
+import 'package:cms_flutter/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 enum _DownloadQuality {
@@ -36,8 +37,10 @@ class _VideoQualityOptionsState extends State<VideoQualityOptions> {
               ),
               title: Text(val.val),
               value: val,
-              tileColor: selectedQuality == val ? const Color(0x1A3B82F6) : null,
+              tileColor:
+                  selectedQuality == val ? const Color(0x1A3B82F6) : null,
               groupValue: selectedQuality,
+              activeColor: CommonPallet.primaryButtonBG,
               onChanged: (val) {
                 setState(() {
                   selectedQuality = val;

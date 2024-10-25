@@ -10,6 +10,7 @@ class SlidesDetails extends StatefulWidget {
 class _SlidesDetailsState extends State<SlidesDetails> {
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return ListView(
       children: [
         SizedBox(
@@ -17,9 +18,8 @@ class _SlidesDetailsState extends State<SlidesDetails> {
           height: 100,
           child: Container(
             decoration: BoxDecoration(
-                color: const Color(0xFFF1F5F9),
-                border:
-                    Border.all(color: const Color.fromARGB(255, 210, 214, 220)),
+                color: colorScheme.tertiary,
+                border: Border.all(color: colorScheme.outline),
                 borderRadius: BorderRadius.circular(15)),
             child: Align(
               alignment: Alignment.center,
@@ -29,8 +29,7 @@ class _SlidesDetailsState extends State<SlidesDetails> {
                   height: 50,
                   child: Container(
                     decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 164, 168, 174)),
+                        border: Border.all(color: colorScheme.outline),
                         borderRadius: BorderRadius.circular(10)),
                     child: const Center(
                       child: Icon(

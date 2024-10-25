@@ -82,11 +82,13 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
               style: TextStyle(fontSize: 16),
             ),
             RichText(
-                text: const TextSpan(
+                text: TextSpan(
                     text: 'Didn\'t Receive and OTP ? ',
-                    style: TextStyle(fontSize: 16, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).textTheme.bodyLarge!.color),
                     children: [
-                  TextSpan(
+                  const TextSpan(
                       text: 'Resend',
                       style: TextStyle(color: Color(0xFF3B58E0)))
                 ])),

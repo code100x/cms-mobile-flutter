@@ -1,4 +1,5 @@
 import 'package:cms_flutter/src/common/primary_button.dart';
+import 'package:cms_flutter/src/constants/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -61,7 +62,7 @@ class _SigninScreenState extends State<SigninScreen> {
                             // TODO: Open the forgot password flow.
                           },
                         style: const TextStyle(
-                            color: Color(0xFF3B58E0), fontSize: 16)),
+                            color: CommonPallet.primaryButtonBG, fontSize: 16)),
                   ),
                 ),
                 PrimaryButton(buttonText: 'Log In', onPressed: () {}),
@@ -72,8 +73,8 @@ class _SigninScreenState extends State<SigninScreen> {
                   child: RichText(
                     text: TextSpan(
                       text: "Don't have an account? ",
-                      style: const TextStyle(
-                        color: Colors.black,
+                      style: TextStyle(
+                        color: Theme.of(context).textTheme.bodyLarge!.color,
                         fontSize: 18,
                       ),
                       children: [
@@ -83,7 +84,8 @@ class _SigninScreenState extends State<SigninScreen> {
                                 // TODO: Navigate to sign up page
                               },
                             text: 'Sign Up',
-                            style: const TextStyle(color: Color(0xFF3B58E0)))
+                            style: const TextStyle(
+                                color: CommonPallet.primaryButtonBG))
                       ],
                     ),
                   ),
@@ -101,8 +103,7 @@ class _SigninScreenState extends State<SigninScreen> {
       padding: const EdgeInsets.only(bottom: 8.0, top: 8),
       child: Text(
         labelText,
-        style: const TextStyle(
-            fontSize: 18, color: Colors.black, fontWeight: FontWeight.w500),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
       ),
     );
   }

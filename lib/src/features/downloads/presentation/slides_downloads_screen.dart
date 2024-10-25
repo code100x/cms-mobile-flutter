@@ -30,7 +30,8 @@ class _SlidesDownloadsScreenState extends State<SlidesDownloadsScreen> {
           child: SizedBox(
               child: Container(
             decoration: BoxDecoration(
-                border: Border.all(color: const Color(0xFFE2E8F0)),
+                border:
+                    Border.all(color: Theme.of(context).colorScheme.outline),
                 borderRadius: BorderRadius.circular(10)),
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0),
@@ -68,9 +69,9 @@ class _SlidesDownloadsScreenState extends State<SlidesDownloadsScreen> {
               height: 100,
               child: Container(
                 decoration: BoxDecoration(
-                    color: const Color(0xFFF1F5F9),
+                    color: Theme.of(context).colorScheme.tertiary,
                     border: Border.all(
-                        color: const Color.fromARGB(255, 210, 214, 220)),
+                        color: Theme.of(context).colorScheme.outline),
                     borderRadius: BorderRadius.circular(15)),
                 child: Align(
                   alignment: Alignment.center,
@@ -81,8 +82,7 @@ class _SlidesDownloadsScreenState extends State<SlidesDownloadsScreen> {
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color:
-                                    const Color.fromARGB(255, 164, 168, 174)),
+                                color: Theme.of(context).colorScheme.outline),
                             borderRadius: BorderRadius.circular(10)),
                         child: const Center(
                           child: Icon(

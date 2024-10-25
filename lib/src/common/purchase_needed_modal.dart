@@ -8,7 +8,6 @@ Future<void> purchaseNeededModal(
   return showModalBottomSheet<void>(
     isScrollControlled: true,
     isDismissible: true,
-    backgroundColor: Colors.white,
     context: context,
     builder: (context) {
       return SizedBox(

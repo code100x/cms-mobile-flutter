@@ -68,9 +68,9 @@ class _HistoryScreenState extends State<HistoryScreen> {
               height: 100,
               child: Container(
                 decoration: BoxDecoration(
-                    color: const Color(0xFFF1F5F9),
+                    color: Theme.of(context).colorScheme.tertiary,
                     border: Border.all(
-                        color: const Color.fromARGB(255, 210, 214, 220)),
+                        color: Theme.of(context).colorScheme.outline),
                     borderRadius: BorderRadius.circular(15)),
                 child: Align(
                   alignment: Alignment.center,
@@ -81,8 +81,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       child: Container(
                         decoration: BoxDecoration(
                             border: Border.all(
-                                color:
-                                    const Color.fromARGB(255, 164, 168, 174)),
+                                color: Theme.of(context).colorScheme.outline),
                             borderRadius: BorderRadius.circular(10)),
                         child: const Center(
                           child: Icon(
