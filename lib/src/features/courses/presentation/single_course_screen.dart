@@ -9,8 +9,21 @@ class SingleCourseScreen extends StatefulWidget {
 }
 
 class _SingleCourseScreenState extends State<SingleCourseScreen> {
+  bool show = false;
+
+  void _setShowToTrue() {
+    Future.delayed(const Duration(seconds: 1)).then((onValue) {
+      if (mounted) {
+        setState(() {
+          show = true;
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    _setShowToTrue();
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 100,
@@ -41,71 +54,94 @@ class _SingleCourseScreenState extends State<SingleCourseScreen> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Expanded(child: _getBookMarks()),
+            Expanded(child: _getBookMarks(show)),
           ],
         ),
       )),
     );
   }
 
-  Widget _getBookMarks() {
+  Widget _getBookMarks(bool show) {
     final listItems = List.generate(10, (index) => index);
-
-    return ListView.separated(
-        itemBuilder: (context, index) {
-          return SizedBox(
-            width: double.infinity,
-            height: 100,
-            child: Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                  color: const Color(0xFFF1F5F9),
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 210, 214, 220)),
-                  borderRadius: BorderRadius.circular(15)),
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () {
-                    context.go('/courses/1/1');
-                  },
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: ListTile(
-                      leading: SizedBox(
-                        width: 50,
-                        height: 50,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color:
-                                      const Color.fromARGB(255, 164, 168, 174)),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: const Center(
-                            child: Icon(
-                              Icons.folder_outlined,
-                              color: Color.fromARGB(255, 103, 106, 110),
+    if (show) {
+      return ListView.separated(
+          itemBuilder: (context, index) {
+            return SizedBox(
+              width: double.infinity,
+              height: 100,
+              child: Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                    color: const Color(0xFFF1F5F9),
+                    border: Border.all(
+                        color: const Color.fromARGB(255, 210, 214, 220)),
+                    borderRadius: BorderRadius.circular(15)),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: () {
+                      context.go('/courses/1/1');
+                    },
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: ListTile(
+                        leading: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: const Color.fromARGB(
+                                        255, 164, 168, 174)),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: const Center(
+                              child: Icon(
+                                Icons.folder_outlined,
+                                color: Color.fromARGB(255, 103, 106, 110),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      title: const Text('HTML Introduction'),
-                      subtitle: const Text('Posted on: 10 Aug 24'),
-                      trailing: const Icon(
-                        Icons.check_circle_rounded,
-                        color: Color(0xFF00823E),
-                        size: 26,
+                        title: const Text('HTML Introduction'),
+                        subtitle: const Text('Posted on: 10 Aug 24'),
+                        trailing: const Icon(
+                          Icons.check_circle_rounded,
+                          color: Color(0xFF00823E),
+                          size: 26,
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
+            );
+          },
+          separatorBuilder: (context, index) => const SizedBox(
+                height: 15,
+              ),
+          itemCount: listItems.length);
+    } else {
+      return const Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.bookmark_outline_sharp,
+              size: 32,
             ),
-          );
-        },
-        separatorBuilder: (context, index) => const SizedBox(
-              height: 15,
+            Text(
+              'Course Not Started Yet',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-        itemCount: listItems.length);
+            SizedBox(
+                width: 320,
+                child: Text(
+                  'This course hasn\'t begun yet. You\'ll be able to access lectures and slides once it does.',
+                  textAlign: TextAlign.center,
+                ))
+          ],
+        ),
+      );
+    }
   }
 }
