@@ -20,7 +20,7 @@ class MainApp extends ConsumerWidget {
       darkTheme: ThemeData.dark(
         useMaterial3: true,
       ).copyWith(
-          navigationBarTheme: NavigationBarThemeData(
+          navigationBarTheme: const NavigationBarThemeData(
             backgroundColor: Color(0xFF111729),
           ),
           scaffoldBackgroundColor: const Color(0xFF020817),

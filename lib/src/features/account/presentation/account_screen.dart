@@ -18,7 +18,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
             Row(
               children: [
@@ -67,12 +67,16 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
             ),
             const Text(
               'John Doe',
+              textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text('johndoe@gmail.com'),
+            const Text(
+              'johndoe@gmail.com',
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(
               height: 20,
             ),
@@ -185,9 +189,6 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                   );
                 },
                 text: 'Logout'),
-            const Spacer(
-              flex: 1,
-            ),
           ],
         ),
       ),

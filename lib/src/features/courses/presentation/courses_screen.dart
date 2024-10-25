@@ -67,7 +67,7 @@ class _CoursesScreenState extends State<CoursesScreen> {
                         Icons.search_rounded,
                         color: Color(0xFF64748B),
                       ),
-                      hintText: 'Search Slides ...',
+                      hintText: 'Search Courses ...',
                       hintStyle: TextStyle(color: Color(0xFF64748B)),
                       border: InputBorder.none,
                     ),
@@ -79,13 +79,16 @@ class _CoursesScreenState extends State<CoursesScreen> {
               height: 20,
             ),
             Expanded(
-                child: ListView(children: const [
-              CourseCard(),
-              SizedBox(
-                height: 10,
+              child: ListView(
+                children: const [
+                  CourseCard(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  CourseCard(),
+                ],
               ),
-              CourseCard(),
-            ]))
+            )
           ],
         ),
       )),
