@@ -1,3 +1,4 @@
+import 'package:cms_flutter/src/common/select_video_quality_modal.dart';
 import 'package:cms_flutter/src/features/courses/video_player/presentation/chapters_details.dart';
 import 'package:cms_flutter/src/features/courses/video_player/presentation/content_details.dart';
 import 'package:cms_flutter/src/features/courses/video_player/presentation/slides_details.dart';
@@ -54,7 +55,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                 const Spacer(),
                 IconButton(
                     onPressed: () {
-                      // TODO: Launch Modal to ask for which quality to download.
+                      selectVideoQualityModal(
+                          context: context,
+                          handleDownload: () {
+                            context.pop();
+                          });
                     },
                     icon: const Icon(Icons.download_outlined))
               ],
