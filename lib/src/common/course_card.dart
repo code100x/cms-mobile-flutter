@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:cms_flutter/src/common/primary_button.dart';
 
 class CourseCard extends StatefulWidget {
@@ -65,7 +67,10 @@ class _CourseCardState extends State<CourseCard> {
                         ],
                       ),
                       PrimaryButton(
-                          buttonText: 'View Content', onPressed: () {}),
+                          buttonText: 'View Content',
+                          onPressed: () {
+                            context.go('/courses/1');
+                          }),
                       const SizedBox(
                         height: 10,
                       ),
