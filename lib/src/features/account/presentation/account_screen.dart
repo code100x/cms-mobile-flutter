@@ -1,17 +1,20 @@
 import 'package:cms_flutter/src/common/primary_button.dart';
 import 'package:cms_flutter/src/common/secondary_button.dart';
+import 'package:cms_flutter/src/theme/dark_mode_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class AccountScreen extends StatefulWidget {
+class AccountScreen extends ConsumerStatefulWidget {
   const AccountScreen({super.key});
   @override
-  State<AccountScreen> createState() => _AccountScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _AccountScreenState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _AccountScreenState extends ConsumerState<AccountScreen> {
   @override
   Widget build(BuildContext context) {
+    var darkMode = ref.watch(darkModeProvider);
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -28,8 +31,10 @@ class _AccountScreenState extends State<AccountScreen> {
                 ),
                 const Spacer(),
                 Switch(
-                  value: true,
-                  onChanged: (val) {},
+                  value: darkMode,
+                  onChanged: (val) {
+                    ref.read(darkModeProvider.notifier).toggle();
+                  },
                 ),
                 const Text('Dark Mode'),
                 const SizedBox(

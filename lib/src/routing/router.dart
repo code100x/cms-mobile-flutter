@@ -29,7 +29,7 @@ final _accountShellKey = GlobalKey<NavigatorState>(debugLabel: 'accountShell');
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: '/landing',
+    initialLocation: '/account',
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: [

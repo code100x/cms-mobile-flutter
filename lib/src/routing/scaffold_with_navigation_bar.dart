@@ -10,8 +10,8 @@ class ScaffoldWithNavigationBar extends StatelessWidget {
     return Scaffold(
       body: navigationShell,
       bottomNavigationBar: NavigationBar(
-          indicatorColor: Colors.blue,
-          backgroundColor: const Color(0xFFF1F5F9),
+          // indicatorColor: Colors.blue,
+          // backgroundColor: const Color(0xFFF1F5F9),
           selectedIndex: navigationShell.currentIndex,
           destinations: const [
             NavigationDestination(
