@@ -1,6 +1,7 @@
 import 'package:cms_flutter/src/features/courses/video_player/presentation/chapters_details.dart';
 import 'package:cms_flutter/src/features/courses/video_player/presentation/content_details.dart';
 import 'package:cms_flutter/src/features/courses/video_player/presentation/slides_details.dart';
+import 'package:cms_flutter/src/features/courses/video_player/presentation/video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,14 +39,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            AspectRatio(
+            const AspectRatio(
               aspectRatio: 16.0 / 9.0,
-              // place holder for video area
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)),
-              ),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: VideoPlayer()),
             ),
             Row(
               children: [
