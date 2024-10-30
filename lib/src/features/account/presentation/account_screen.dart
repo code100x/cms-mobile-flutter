@@ -1,6 +1,8 @@
 import 'package:cms_flutter/src/common/change_theme_button.dart';
 import 'package:cms_flutter/src/common/primary_button.dart';
 import 'package:cms_flutter/src/common/secondary_button.dart';
+import 'package:cms_flutter/src/features/account/data/initials_provider.dart';
+import 'package:cms_flutter/src/features/auth/data/auth_repo.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -15,6 +17,8 @@ class AccountScreen extends ConsumerStatefulWidget {
 class _AccountScreenState extends ConsumerState<AccountScreen> {
   @override
   Widget build(BuildContext context) {
+    final user = ref.read(authRepoProvider).currentUser!;
+    final initials = ref.read(initialsProvider);
     return Scaffold(
       appBar: AppBar(),
       body: SafeArea(
@@ -46,10 +50,10 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                     decoration: BoxDecoration(
                         color: Theme.of(context).colorScheme.tertiary,
                         borderRadius: BorderRadius.circular(10)),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        'JD',
-                        style: TextStyle(
+                        initials,
+                        style: const TextStyle(
                             fontSize: 30,
                             fontWeight: FontWeight.w500,
                             color: Color(0xFF64748B)),
@@ -59,16 +63,16 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                 ),
               ),
             ),
-            const Text(
-              'John Doe',
+            Text(
+              user.name,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
             ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              'johndoe@gmail.com',
+            Text(
+              user.email,
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -159,7 +163,7 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
                                     child: PrimaryButton(
                                       buttonText: 'Logout',
                                       onPressed: () {
-                                        context.go('/landing');
+                                        ref.read(authRepoProvider).logOut();
                                       },
                                       color: Colors.red,
                                     ),

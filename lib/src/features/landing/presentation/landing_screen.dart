@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:cms_flutter/src/common/primary_button.dart';
-import 'package:cms_flutter/src/common/secondary_button.dart';
+
 import 'package:cms_flutter/src/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -37,14 +37,6 @@ class LandingScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              OutlinedButton(
-                  onPressed: () {
-                    context.go('/account');
-                  },
-                  child: const Text("Test User Login")),
               Expanded(
                 child: Stack(
                   alignment: Alignment.center,
@@ -249,15 +241,6 @@ class LandingScreen extends StatelessWidget {
                           onPressed: () {
                             context.go('/signin');
                           }),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SecondaryButton(
-                        buttonText: 'Sign Up Now',
-                        onPressed: () {
-                          context.go('/signup');
-                        },
-                      ),
                     ],
                   ),
                 ),

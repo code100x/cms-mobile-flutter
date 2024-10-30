@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class DarkModeNotifier extends StateNotifier<bool> {
   late SharedPreferences prefs;
-  Future _init() async {
+  Future<void> _init() async {
     prefs = await SharedPreferences.getInstance();
     var darkMode = prefs.getBool("darkMode");
     state = darkMode ?? false;

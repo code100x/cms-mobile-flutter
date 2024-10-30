@@ -1,6 +1,8 @@
 import 'package:cms_flutter/src/features/account/presentation/account_screen.dart';
 import 'package:cms_flutter/src/features/account/presentation/change_password_screen.dart';
 import 'package:cms_flutter/src/features/account/presentation/edit_profile_screen.dart';
+import 'package:cms_flutter/src/features/auth/data/auth_notifier.dart';
+
 import 'package:cms_flutter/src/features/auth/presentation/signin_screen.dart';
 import 'package:cms_flutter/src/features/auth/presentation/signup_screen.dart';
 import 'package:cms_flutter/src/features/auth/presentation/verify_otp_screen.dart';
@@ -28,10 +30,31 @@ final _historyShellKey = GlobalKey<NavigatorState>(debugLabel: 'historyShell');
 final _accountShellKey = GlobalKey<NavigatorState>(debugLabel: 'accountShell');
 
 final goRouterProvider = Provider<GoRouter>((ref) {
+  final authNotifier = ref.watch(authNotifierProvider);
   return GoRouter(
-    initialLocation: '/courses/1/1',
+    initialLocation: '/courses',
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
+    refreshListenable: authNotifier,
+    redirect: (context, state) {
+      final isAuthenticated = authNotifier.isAuthenticated;
+      print("checked if is authenticated $isAuthenticated");
+      final loggedInRequiredPaths = [
+        '/courses',
+        '/downloads',
+        '/bookmarks',
+        '/history',
+        '/account',
+      ];
+      final guestOnlyPaths = ['/signin', '/signup', '/verify-otp'];
+
+      if (!isAuthenticated && loggedInRequiredPaths.contains(state.uri.path)) {
+        return '/landing';
+      } else if (isAuthenticated && guestOnlyPaths.contains(state.uri.path)) {
+        return '/courses';
+      }
+      return null;
+    },
     routes: [
       GoRoute(
         path: '/landing',

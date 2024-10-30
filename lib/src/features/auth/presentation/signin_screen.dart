@@ -1,17 +1,29 @@
 import 'package:cms_flutter/src/common/primary_button.dart';
-import 'package:cms_flutter/src/constants/colors.dart';
-import 'package:flutter/gestures.dart';
+import 'package:cms_flutter/src/features/auth/data/auth_repo.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class SigninScreen extends StatefulWidget {
+class SigninScreen extends ConsumerStatefulWidget {
   const SigninScreen({super.key});
 
   @override
-  State<SigninScreen> createState() => _SigninScreenState();
+  ConsumerState<SigninScreen> createState() => _SigninScreenState();
 }
 
-class _SigninScreenState extends State<SigninScreen> {
+class _SigninScreenState extends ConsumerState<SigninScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,61 +49,68 @@ class _SigninScreenState extends State<SigninScreen> {
               style: TextStyle(fontSize: 18),
             ),
             Form(
+                key: _formKey,
                 child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 10,
-                ),
-                _formLabel("Email Address / Phone No."),
-                TextFormField(
-                  decoration:
-                      _fieldDecoration("Enter Email Address / Phone No."),
-                ),
-                _formLabel("Password"),
-                TextFormField(
-                  decoration: _fieldDecoration("Enter Password"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 12, bottom: 12),
-                  child: RichText(
-                    text: TextSpan(
-                        text: "Forgot Password?",
-                        recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            // TODO: Open the forgot password flow.
-                          },
-                        style: const TextStyle(
-                            color: CommonPallet.primaryButtonBG, fontSize: 16)),
-                  ),
-                ),
-                PrimaryButton(buttonText: 'Log In', onPressed: () {}),
-                const SizedBox(
-                  height: 20,
-                ),
-                Center(
-                  child: RichText(
-                    text: TextSpan(
-                      text: "Don't have an account? ",
-                      style: TextStyle(
-                        color: Theme.of(context).textTheme.bodyLarge!.color,
-                        fontSize: 18,
-                      ),
-                      children: [
-                        TextSpan(
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                // TODO: Navigate to sign up page
-                              },
-                            text: 'Sign Up',
-                            style: const TextStyle(
-                                color: CommonPallet.primaryButtonBG))
-                      ],
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 10,
                     ),
-                  ),
-                ),
-              ],
-            ))
+                    _formLabel("Email Address / Phone No."),
+                    TextFormField(
+                      controller: emailController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return "Email cannot be empty";
+                        }
+                        if (!value.contains('@') || !value.contains('.')) {
+                          return "Please enter a valid email";
+                        }
+
+                        return null;
+                      },
+                      decoration:
+                          _fieldDecoration("Enter Email Address / Phone No."),
+                    ),
+                    _formLabel("Password"),
+                    TextFormField(
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      controller: passwordController,
+                      validator: (value) {
+                        if (value == "") {
+                          return "Password cannot be empty";
+                        }
+                        return null;
+                      },
+                      decoration: _fieldDecoration("Enter Password"),
+                    ),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    PrimaryButton(
+                        buttonText: 'Log In',
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            if (await ref
+                                .read(authRepoProvider)
+                                .signInWithEmailAndPassword(
+                                    email: emailController.value.text,
+                                    password: passwordController.value.text)) {
+                            } else {
+                              Scaffold.of(context).showBottomSheet((context) {
+                                return SnackBar(
+                                    content: Text("Some thing went wrong"));
+                              });
+                            }
+                          }
+                        }),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ))
           ],
         ),
       ),
