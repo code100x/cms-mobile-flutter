@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:cms_flutter/env/env.dart';
 import 'package:cms_flutter/src/features/auth/domain/app_user.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -46,7 +47,7 @@ class AuthRepo {
       {required String email, required String password}) async {
     try {
       final response = await dio.post('/signin',
-          options: Options(headers: {'Auth-Key': ''}),
+          options: Options(headers: {'Auth-Key': Env.authKey}),
           data: {"email": email, "password": password});
 
       if (response.data['message'] == "User found") {
@@ -54,20 +55,14 @@ class AuthRepo {
             AppUser.fromJson(response.data['data'] as Map<String, dynamic>);
         _appUser = user;
         await storage.write(key: 'user', value: json.encode(user.toJson()));
-        // also write the user and token to the local storage and
-        // read both things separately on app stratup and override the provider
         print("success signin");
         _authStateController.add(_appUser);
         return true;
       }
     } catch (e) {
       if (e is DioException) {
-        // Log detailed information from the DioError response
         print("Error during sign-in:");
-        print("Status code: ${e.response?.statusCode}");
-        print("Response data: ${e.response?.data}");
-        print("Headers: ${e.response?.headers}");
-        print("Request options: ${e.requestOptions}");
+        print('$e');
       } else {
         print("Unexpected error: $e");
       }

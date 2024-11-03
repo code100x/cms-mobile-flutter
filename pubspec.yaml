@@ -9,6 +9,7 @@ environment:
 dependencies:
   chewie: ^1.8.5
   dio: ^5.7.0
+  envied: ^0.5.4+1
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.6.1
@@ -29,6 +30,7 @@ dev_dependencies:
   custom_lint: ^0.6.8
   riverpod_lint: ^2.6.1
   json_serializable: ^6.8.0
+  envied_generator: ^0.5.4+1
 
 flutter:
   uses-material-design: true
